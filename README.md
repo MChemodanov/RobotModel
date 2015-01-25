@@ -1,5 +1,5 @@
 RobotModel
 ==========
 
-Simle OOP-robot model for education
+Simple OOP-robot model for education.
 
