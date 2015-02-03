@@ -58,3 +58,11 @@ float FloatingObject::getWaterResistanceK()
 {
     return waterResistanceK;
 }
+
+float FloatingObject::getForces()
+{
+    float weight = getMass()*GRAVITY_CONST;
+    float waterResistance = getSpeed()*getWaterResistanceK();
+    return weight + getArchimedForce() + waterResistance;
+}
+

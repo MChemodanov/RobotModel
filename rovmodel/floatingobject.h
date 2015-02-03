@@ -1,6 +1,8 @@
 #ifndef FLOATINGOBJECT_H
 #define FLOATINGOBJECT_H
 
+const float GRAVITY_CONST = 9.81;
+
 class FloatingObject
 {
 
@@ -12,6 +14,7 @@ private:
     float depth;
 
 public:
+    FloatingObject() {}
     FloatingObject(float mass, float archimedForce, float waterResistanceK);
 
     void Initialize(float speed, float depth);
@@ -22,6 +25,8 @@ public:
     float getArchimedForce();
     float getMass();
     float getWaterResistanceK();
+
+    virtual float getForces();
 };
 
 #endif // FLOATINGOBJECT_H

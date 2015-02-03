@@ -16,3 +16,8 @@ void Robot::setEnginePower(float power)
 {
     this->enginePower = power;
 }
+
+float Robot::getForces()
+{
+    return FloatingObject::getForces() + getEnginePower();
+}

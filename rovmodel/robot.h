@@ -13,6 +13,8 @@ public:
     void setEnginePower(float power);
 
     float getEnginePower();
+
+    virtual float getForces();
 };
 
 

@@ -5,48 +5,43 @@
 #include <iostream>
 #include <iomanip>
 
-const float GRAVITY_CONST = 9.81;
+
 const float TIME_CONST = 0.1;
 const float ITERATIONS = 200;
 
 
-
-float CalculateForces(Robot & r)
-{
-    float weight = -r.getMass()*GRAVITY_CONST;
-    float waterResistance = -r.getSpeed()*r.getWaterResistanceK();
-    return weight + r.getArchimedForce() + waterResistance + r.getEnginePower();
-}
-
-float CalculateForces(FloatingObject & w)
-{
-    float weight = -w.getMass()*GRAVITY_CONST;
-    float waterResistance = -w.getSpeed()*w.getWaterResistanceK();
-    return weight + w.getArchimedForce() + waterResistance;
-}
-
 int main()
 {
     Robot r(1, 50, 0.1, -35);
-    FloatingObject w(1, 30, 0.1);
+    FloatingObject w(1, 50, 0.1);
+    FloatingObject w1(1, 40, 0.1);
+    FloatingObject w2(1, 30, 0.1);
+    FloatingObject w3(1, 20, 0.1);
     r.Initialize(0, -5);
     w.Initialize(0, -5);
+    w1.Initialize(0, -5);
+    w2.Initialize(0, -5);
+    w3.Initialize(0, -5);
+
+    FloatingObject *objects[5];
+    objects[0] = &r;
+    objects[1] = &w;
+    objects[2] = &w1;
+    objects[3] = &w2;
+    objects[4] = &w3;
 
     for (int i =0; i < ITERATIONS; i++)
     {
-        float forceSum = CalculateForces(r);
-        float acceleration = forceSum/r.getMass();
+        for (int j=0; j < 4; j++)
+        {
+            /*float forceSum = objects[j]->getForces();
+            float acceleration = forceSum/objects[j]->getMass();
 
-        r.setSpeed(acceleration*TIME_CONST);
-        r.setDepth(r.getDepth() + r.getSpeed()*TIME_CONST);
-
-        forceSum = CalculateForces(w);
-        acceleration = forceSum/w.getMass();
-
-        w.setSpeed(acceleration*TIME_CONST);
-        w.setDepth(w.getDepth() + w.getSpeed()*TIME_CONST);
-
-        std::cout << std::setw(15) << r.getDepth() << std::setw(15) << w.getDepth() << std::endl;
+            objects[j]->setSpeed(acceleration*TIME_CONST);
+            objects[j]->setDepth(objects[j]->getDepth() + objects[j]->getSpeed()*TIME_CONST);
+            std::cout << std::setw(15) << objects[j]->getDepth();*/
+        }
+        std::cout << std::endl;
     }
 
     system("pause");
