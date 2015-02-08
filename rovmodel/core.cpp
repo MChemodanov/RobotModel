@@ -9,7 +9,6 @@
 const float TIME_CONST = 0.1;
 const float ITERATIONS = 200;
 
-
 int main()
 {
     Robot r(1, 50, 0.1, -35);
@@ -17,11 +16,11 @@ int main()
     FloatingObject w1(1, 40, 0.1);
     FloatingObject w2(1, 30, 0.1);
     FloatingObject w3(1, 20, 0.1);
-    r.Initialize(0, -5);
-    w.Initialize(0, -5);
-    w1.Initialize(0, -5);
-    w2.Initialize(0, -5);
-    w3.Initialize(0, -5);
+    r.Initialize(0, -50);
+    w.Initialize(0, -50);
+    w1.Initialize(0, -50);
+    w2.Initialize(0, -50);
+    w3.Initialize(0, -50);
 
     FloatingObject *objects[5];
     objects[0] = &r;
@@ -34,12 +33,13 @@ int main()
     {
         for (int j=0; j < 4; j++)
         {
-            /*float forceSum = objects[j]->getForces();
+            float forceSum = objects[j]->getForces();
             float acceleration = forceSum/objects[j]->getMass();
 
             objects[j]->setSpeed(acceleration*TIME_CONST);
             objects[j]->setDepth(objects[j]->getDepth() + objects[j]->getSpeed()*TIME_CONST);
-            std::cout << std::setw(15) << objects[j]->getDepth();*/
+            std::cout << std::setw(15) << objects[j]->getDepth();
+            r.holdDepth(-20);
         }
         std::cout << std::endl;
     }

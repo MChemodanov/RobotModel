@@ -11,6 +11,19 @@ float Robot::getEnginePower()
     return enginePower;
 }
 
+int mark = 0;
+void Robot::holdDepth(float depthToHold)
+{
+    if (getDepth() > depthToHold)
+    {
+        mark = 1;
+        setEnginePower((depthToHold - getDepth())*230);
+    }
+    if (getDepth() < depthToHold && mark == 1)
+    {
+        setEnginePower((getDepth() - depthToHold)*230);
+    }
+}
 
 void Robot::setEnginePower(float power)
 {

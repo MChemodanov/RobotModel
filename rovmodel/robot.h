@@ -11,8 +11,10 @@ public:
     Robot(float mass, float archimedForce, float waterResistanceK, float enginePower);
 
     void setEnginePower(float power);
+    void holdDepth(float depthToHold);
 
     float getEnginePower();
+    float getDepthToHold();
 
     virtual float getForces();
 };

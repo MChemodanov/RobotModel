@@ -14,7 +14,6 @@ private:
     float depth;
 
 public:
-    FloatingObject() {}
     FloatingObject(float mass, float archimedForce, float waterResistanceK);
 
     void Initialize(float speed, float depth);
