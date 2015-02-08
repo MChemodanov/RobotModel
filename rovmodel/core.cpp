@@ -17,6 +17,7 @@ int main()
     FloatingObject w2(1, 30, 0.1);
     FloatingObject w3(1, 20, 0.1);
     r.Initialize(0, -50);
+    r.setDepthToHold(-20);
     w.Initialize(0, -50);
     w1.Initialize(0, -50);
     w2.Initialize(0, -50);
@@ -39,7 +40,7 @@ int main()
             objects[j]->setSpeed(acceleration*TIME_CONST);
             objects[j]->setDepth(objects[j]->getDepth() + objects[j]->getSpeed()*TIME_CONST);
             std::cout << std::setw(15) << objects[j]->getDepth();
-            r.holdDepth(-20);
+            r.regulateDepth();
         }
         std::cout << std::endl;
     }

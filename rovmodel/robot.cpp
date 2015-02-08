@@ -10,9 +10,13 @@ float Robot::getEnginePower()
 {
     return enginePower;
 }
+float Robot::getDepthToHold()
+{
+    return depthToHold;
+}
 
 int mark = 0;
-void Robot::holdDepth(float depthToHold)
+void Robot::regulateDepth()
 {
     if (getDepth() > depthToHold)
     {
@@ -28,6 +32,10 @@ void Robot::holdDepth(float depthToHold)
 void Robot::setEnginePower(float power)
 {
     this->enginePower = power;
+}
+void Robot::setDepthToHold(float depthToHold)
+{
+    this->depthToHold = depthToHold;
 }
 
 float Robot::getForces()
