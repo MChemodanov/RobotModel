@@ -2,6 +2,7 @@
 #define FLOATINGOBJECT_H
 
 const float GRAVITY_CONST = 9.81;
+const float RANDOM_CONST = 100;
 
 class FloatingObject
 {
@@ -14,7 +15,6 @@ private:
     float depth;
 
 public:
-    FloatingObject() {}
     FloatingObject(float mass, float archimedForce, float waterResistanceK);
 
     void Initialize(float speed, float depth);
@@ -27,6 +27,7 @@ public:
     float getWaterResistanceK();
 
     virtual float getForces();
+    virtual void regulateDepth();
 };
 
 #endif // FLOATINGOBJECT_H
