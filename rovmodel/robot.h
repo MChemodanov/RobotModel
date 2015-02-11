@@ -13,12 +13,12 @@ public:
 
     void setEnginePower(float power);
     void setDepthToHold(float depthToHold);
-    void regulateDepth();
 
     float getEnginePower();
     float getDepthToHold();
 
     virtual float getForces();
+    virtual void regulateDepth();
 };
 
 

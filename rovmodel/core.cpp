@@ -6,6 +6,7 @@
 #include <iomanip>
 
 
+
 const float TIME_CONST = 0.1;
 const float ITERATIONS = 200;
 
@@ -34,13 +35,13 @@ int main()
     {
         for (int j=0; j < 4; j++)
         {
+            objects[j]->regulateDepth();
             float forceSum = objects[j]->getForces();
             float acceleration = forceSum/objects[j]->getMass();
 
             objects[j]->setSpeed(acceleration*TIME_CONST);
             objects[j]->setDepth(objects[j]->getDepth() + objects[j]->getSpeed()*TIME_CONST);
             std::cout << std::setw(15) << objects[j]->getDepth();
-            r.regulateDepth();
         }
         std::cout << std::endl;
     }

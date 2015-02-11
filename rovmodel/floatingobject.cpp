@@ -66,3 +66,7 @@ float FloatingObject::getForces()
     return weight + getArchimedForce() + waterResistance;
 }
 
+void FloatingObject::regulateDepth()
+{
+    //FloatingObject can't regulate depth =(.
+}

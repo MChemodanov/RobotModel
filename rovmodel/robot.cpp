@@ -1,5 +1,8 @@
 #include "robot.h"
 
+
+#include <cmath>
+
 Robot::Robot(float mass, float archimedForce, float waterResistanceK, float enginePower)
     : FloatingObject(mass, archimedForce, waterResistanceK),
       enginePower(enginePower)
@@ -15,25 +18,15 @@ float Robot::getDepthToHold()
     return depthToHold;
 }
 
-int mark = 0;
-void Robot::regulateDepth()
-{
-    if (getDepth() > depthToHold)
-    {
-        mark = 1;
-        setEnginePower((depthToHold - getDepth())*230);
-    }
-    if (getDepth() < depthToHold && mark == 1)
-    {
-        setEnginePower((getDepth() - depthToHold)*230);
-    }
-}
-
 void Robot::setEnginePower(float power)
 {
-    this->enginePower = power;
+    if (fabs(power) < 100)
+        this->enginePower = power;
+    else
+        this->enginePower = (fabs(power)/power)*100;
 }
-void Robot::setDepthToHold(float depthToHold)
+
+void Robot::setDepthToHold(float depthToHold = 0)
 {
     this->depthToHold = depthToHold;
 }
@@ -41,4 +34,9 @@ void Robot::setDepthToHold(float depthToHold)
 float Robot::getForces()
 {
     return FloatingObject::getForces() + getEnginePower();
+}
+
+void Robot::regulateDepth()
+{
+    setEnginePower((depthToHold - getDepth())*RANDOM_CONST);
 }
