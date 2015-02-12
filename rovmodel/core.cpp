@@ -35,7 +35,7 @@ int main()
     {
         for (int j=0; j < 4; j++)
         {
-            objects[j]->regulateDepth();
+            objects[j]->process();
             float forceSum = objects[j]->getForces();
             float acceleration = forceSum/objects[j]->getMass();
 

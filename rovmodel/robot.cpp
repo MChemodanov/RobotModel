@@ -41,3 +41,8 @@ void Robot::regulateDepth()
 {
     setEnginePower((depthToHold - getDepth())*SYS_CONST);
 }
+
+void Robot::process()
+{
+    regulateDepth();
+}
