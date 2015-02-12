@@ -6,15 +6,20 @@
 class Robot : public FloatingObject
 {
     float enginePower;
+    float maxEnginePower;
+    float depthToHold;
 
 public:
-    Robot(float mass, float archimedForce, float waterResistanceK, float enginePower);
+    Robot(float mass, float archimedForce, float waterResistanceK, float enginePower, float maxEnginePower);
 
     void setEnginePower(float power);
+    void setDepthToHold(float depthToHold);
 
     float getEnginePower();
+    float getDepthToHold();
 
     virtual float getForces();
+    virtual void regulateDepth();
 };
 
 
