@@ -1,7 +1,7 @@
 #include "robot.h"
-
-
 #include <cmath>
+
+const float SYS_CONST = 100;
 
 Robot::Robot(float mass, float archimedForce, float waterResistanceK, float enginePower, float maxEnginePower)
     : FloatingObject(mass, archimedForce, waterResistanceK),
@@ -27,7 +27,7 @@ void Robot::setEnginePower(float power)
         this->enginePower = (fabs(power)/power)*maxEnginePower;
 }
 
-void Robot::setDepthToHold(float depthToHold = 0)
+void Robot::setDepthToHold(float depthToHold = 1)
 {
     this->depthToHold = depthToHold;
 }
@@ -44,5 +44,6 @@ void Robot::regulateDepth()
 
 void Robot::process()
 {
-    regulateDepth();
+    if (depthToHold < 1)
+        regulateDepth();
 }

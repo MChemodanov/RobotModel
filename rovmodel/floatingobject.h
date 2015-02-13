@@ -2,7 +2,6 @@
 #define FLOATINGOBJECT_H
 
 const float GRAVITY_CONST = 9.81;
-const float SYS_CONST = 100;
 
 class FloatingObject
 {
