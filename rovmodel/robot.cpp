@@ -2,6 +2,7 @@
 #include <cmath>
 
 const float SYS_CONST = 100;
+const float ERROR_CONST = 0.5981;
 
 Robot::Robot(float mass, float archimedForce, float waterResistanceK, float enginePower, float maxEnginePower)
     : FloatingObject(mass, archimedForce, waterResistanceK),
@@ -39,7 +40,7 @@ float Robot::getForces()
 
 void Robot::regulateDepth()
 {
-    setEnginePower((depthToHold - getDepth())*SYS_CONST);
+    setEnginePower((depthToHold - ERROR_CONST - getDepth())*SYS_CONST);
 }
 
 void Robot::process()
