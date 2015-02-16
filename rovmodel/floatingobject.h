@@ -27,6 +27,7 @@ public:
     float getWaterResistanceK();
 
     virtual float getForces();
+    virtual void controlH(float need, float depth);
 };
 
 #endif // FLOATINGOBJECT_H
