@@ -14,6 +14,8 @@ public:
 
     float getEnginePower();
 
+    void controlH(float need, float depth);
+
     virtual float getForces();
 };
 

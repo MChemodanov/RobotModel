@@ -66,3 +66,8 @@ float FloatingObject::getForces()
     return weight + getArchimedForce() + waterResistance;
 }
 
+void FloatingObject::controlH(float need, float depth)
+{
+
+}
+
