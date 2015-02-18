@@ -14,7 +14,6 @@ private:
     float depth;
 
 public:
-    FloatingObject() {}
     FloatingObject(float mass, float archimedForce, float waterResistanceK);
 
     void Initialize(float speed, float depth);
@@ -27,6 +26,7 @@ public:
     float getWaterResistanceK();
 
     virtual float getForces();
+    virtual void process();
 };
 
 #endif // FLOATINGOBJECT_H
