@@ -1,12 +1,10 @@
 #include "robot.h"
 #include <cmath>
 
-const float SYS_CONST = 100;
-const float ERROR_CONST = 0.5981;
 
-Robot::Robot(float mass, float archimedForce, float waterResistanceK, float enginePower, float maxEnginePower)
+Robot::Robot(float mass, float archimedForce, float waterResistanceK, float enginePower, float maxEnginePower, float proportionalFact)
     : FloatingObject(mass, archimedForce, waterResistanceK),
-      enginePower(enginePower), maxEnginePower(maxEnginePower)
+      enginePower(enginePower), maxEnginePower(maxEnginePower), proportionalFact(proportionalFact)
  {
  }
 
@@ -18,6 +16,11 @@ float Robot::getEnginePower()
 float Robot::getDepthToHold()
 {
     return depthToHold;
+}
+
+float Robot::getProportionalFact()
+{
+    return proportionalFact;
 }
 
 void Robot::setEnginePower(float power)
@@ -40,11 +43,11 @@ float Robot::getForces()
 
 void Robot::regulateDepth()
 {
-    setEnginePower((depthToHold - ERROR_CONST - getDepth())*SYS_CONST);
+    setEnginePower((getDepthToHold() - getDepth())*getProportionalFact());
 }
 
 void Robot::process()
 {
-    if (depthToHold < 1)
+    if (getDepthToHold() < 1)
         regulateDepth();
 }

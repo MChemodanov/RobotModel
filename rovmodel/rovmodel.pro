@@ -14,4 +14,3 @@ qtcAddDeployment()
 HEADERS += \
     floatingobject.h \
     robot.h
-

@@ -12,7 +12,7 @@ const float ITERATIONS = 200;
 
 int main()
 {
-    Robot r(1, 50, 0.1, -35, 100);
+    Robot r(1, 50, 0.1, -35, 100, 100);
     FloatingObject w(1, 50, 0.1);
     FloatingObject w1(1, 40, 0.1);
     FloatingObject w2(1, 30, 0.1);
